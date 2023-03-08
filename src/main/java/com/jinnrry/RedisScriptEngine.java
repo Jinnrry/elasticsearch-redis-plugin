@@ -1,7 +1,6 @@
 package com.jinnrry;
 
 
-import org.apache.lucene.index.LeafReaderContext;
 import org.elasticsearch.script.*;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

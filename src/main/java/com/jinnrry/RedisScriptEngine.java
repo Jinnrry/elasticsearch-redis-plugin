@@ -9,9 +9,11 @@ import org.elasticsearch.script.ScriptEngine;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.io.IOException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Map;
+import java.util.Set;
 
 public class RedisScriptEngine implements ScriptEngine {
     private static JedisPool pool;
@@ -96,7 +98,7 @@ public class RedisScriptEngine implements ScriptEngine {
                 public ScoreScript newInstance(LeafReaderContext leafReaderContext) {
                     return new ScoreScript(p, searchLookup, leafReaderContext) {
                         @Override
-                        public double execute() {
+                        public double execute(ExplanationHolder explanationHolder) {
                             if (!p.containsKey("key_pre")) {
                                 throw new IllegalArgumentException("[key_pre] must be include params!");
                             }
@@ -122,6 +124,16 @@ public class RedisScriptEngine implements ScriptEngine {
         }
 
         throw new IllegalArgumentException("Unknown script name " + code);
+    }
+
+    @Override
+    public void close() throws IOException {
+        ScriptEngine.super.close();
+    }
+
+    @Override
+    public Set<ScriptContext<?>> getSupportedContexts() {
+        return Set.of(FilterScript.CONTEXT);
     }
 
 

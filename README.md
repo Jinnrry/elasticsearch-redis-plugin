@@ -1,6 +1,6 @@
 # redis数据源插件
 
-> 目前支持的es版本为6.6.1
+> 目前支持的es版本为7.6.0
 
 
 
@@ -23,14 +23,12 @@ cd es-docker-compose && docker-compose up --build -d
 PUT /demo
 {
     "mappings": {
-        "_doc": {
-            "properties": {
-                "product_id": {
-                    "type": "long"
-                },
-                "product_name": {
-                    "type": "text"
-                }
+        "properties": {
+            "product_id": {
+                "type": "long"
+            },
+            "product_name": {
+                "type": "text"
             }
         }
     }

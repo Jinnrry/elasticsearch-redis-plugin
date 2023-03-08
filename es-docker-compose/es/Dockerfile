@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 elasticsearch:6.6.1
+FROM --platform=linux/amd64 elasticsearch:7.6.0
 
 # 设置配置文件
 COPY ./elasticsearch.yml /usr/share/elasticsearch/config/

@@ -2,10 +2,7 @@ package com.jinnrry;
 
 
 import org.apache.lucene.index.LeafReaderContext;
-import org.elasticsearch.script.FilterScript;
-import org.elasticsearch.script.ScoreScript;
-import org.elasticsearch.script.ScriptContext;
-import org.elasticsearch.script.ScriptEngine;
+import org.elasticsearch.script.*;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -95,8 +92,8 @@ public class RedisScriptEngine implements ScriptEngine {
                 }
 
                 @Override
-                public ScoreScript newInstance(LeafReaderContext leafReaderContext) {
-                    return new ScoreScript(p, searchLookup, leafReaderContext) {
+                public ScoreScript newInstance(DocReader docReader) {
+                    return new ScoreScript(p, searchLookup, docReader) {
                         @Override
                         public double execute(ExplanationHolder explanationHolder) {
                             if (!p.containsKey("key_pre")) {

@@ -9,10 +9,10 @@
     <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <elasticsearch.version>7.6.0</elasticsearch.version>
+        <elasticsearch.version>8.6.2</elasticsearch.version>
         <elasticsearch.description>elasticsearch redis plugin</elasticsearch.description>
         <elasticsearch.plugin.name>redis-plug</elasticsearch.plugin.name>
         <elasticsearch.plugin.classname>com.jinnrry.Main</elasticsearch.plugin.classname>

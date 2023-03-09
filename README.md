@@ -11,6 +11,7 @@ Welcome PR，Welcome Issues!
 `elasticsearch-plugin install --batch file:///redis-plugin-1.0.zip`
 
 2、elasticsearch.yml中添加redis连接信息
+
 `esHotelPlugin.redis.url: "redis://127.0.0.1:6379"`
 
 3、使用示例

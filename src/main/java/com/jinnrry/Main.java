@@ -1,6 +1,7 @@
 package com.jinnrry;
 
 
+import org.elasticsearch.SpecialPermission;
 import org.elasticsearch.common.settings.Setting;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.plugins.Plugin;
@@ -11,8 +12,6 @@ import org.elasticsearch.script.ScriptEngine;
 import redis.clients.jedis.JedisPool;
 
 import java.nio.file.Path;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -51,7 +50,8 @@ public class Main extends Plugin implements ScriptPlugin, SearchPlugin {
 
 
     private static JedisPool connectRedis(String redisUrl) {
-        return AccessController.doPrivileged((PrivilegedAction<JedisPool>) () -> new JedisPool(redisUrl));
+        SpecialPermission.check();
+        return java.security.AccessController.doPrivileged((java.security.PrivilegedAction<JedisPool>) () -> new JedisPool(redisUrl));
     }
 
 }

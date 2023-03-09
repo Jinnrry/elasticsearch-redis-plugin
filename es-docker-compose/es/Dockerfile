@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 elasticsearch:8.6.2
+FROM elasticsearch:8.6.2
 
 # 设置配置文件
 COPY ./elasticsearch.yml /usr/share/elasticsearch/config/

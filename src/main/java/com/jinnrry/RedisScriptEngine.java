@@ -8,6 +8,7 @@ import redis.clients.jedis.JedisPool;
 import java.io.IOException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -129,7 +130,10 @@ public class RedisScriptEngine implements ScriptEngine {
 
     @Override
     public Set<ScriptContext<?>> getSupportedContexts() {
-        return Set.of(FilterScript.CONTEXT);
+        Set<ScriptContext<?>> set = new HashSet<>();
+        set.add(FilterScript.CONTEXT);
+        set.add(ScoreScript.CONTEXT);
+        return set;
     }
 
 
